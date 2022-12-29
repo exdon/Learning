@@ -39,6 +39,14 @@ class BonusServiceTest {
 		// é chamado, informando que o teste falhou
 		// caso dê a exception, ele entrará no catch que captura essa exception
 		// e verifica se a mensagem passada na exception é igual a que retornou
+		
+		// ----- OUTRA FORMA DE VALIDAR A MENSAGEM DO EXCEPTION USANDO ASSERTTHROWS 
+		
+		var e = assertThrows(
+				IllegalArgumentException.class, 
+				() -> service.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal("25000")))
+				);
+		assertEquals(e.getMessage(), "Funcionário com salario maior do que R$ 10.000 não pode receber bonus!");
 
 	}
 	
